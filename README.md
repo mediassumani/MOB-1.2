@@ -8,7 +8,7 @@ This repository contains a list of my Mobile 1.2 class projects at product colle
 ## Projects
 
 - [x] Majic 8 Ball
-- [ ] Tip Calculator
+- [x] Tip Calculator
 - [ ] Habitual App
 - [ ] Loaner App
 
