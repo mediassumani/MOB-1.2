@@ -26,8 +26,8 @@ class ViewController: UIViewController {
         purpleView.backgroundColor = UIColor.purple
         purpleView.translatesAutoresizingMaskIntoConstraints = false
         
-        // Leading constraints
-        let purpleViewLeading = NSLayoutConstraint(item: purpleView,
+        // Leading constraint
+        let purpleViewLeadingConstraint = NSLayoutConstraint(item: purpleView,
                                                    attribute: .leading,
                                                    relatedBy: .equal,
                                                    toItem: self.view,
@@ -35,8 +35,26 @@ class ViewController: UIViewController {
                                                    multiplier: 1,
                                                    constant: 20)
         
-        // Trailing constraints
-        let purpleviewTrailing = NSLayoutConstraint(item: purpleView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
+        // Trailing constraint
+        let purpleViewTrailingContraint = NSLayoutConstraint(item: purpleView,
+                                                    attribute: .trailing,
+                                                    relatedBy: .equal,
+                                                    toItem: self.view,
+                                                    attribute: .trailing,
+                                                    multiplier: 1,
+                                                    constant: 20)
+        
+        // Top Constraint
+        let purpleViewTopConstraint = NSLayoutConstraint(item: purpleView,
+                                                         attribute: .top,
+                                                         relatedBy: .equal,
+                                                         toItem: self.view,
+                                                         attribute: .top,
+                                                         multiplier: 1,
+                                                         constant: 20)
+        
+        
+        // Bottom Constraint
      
         self.view.addSubview(purpleView)
         self.view.addSubview(blueView)
