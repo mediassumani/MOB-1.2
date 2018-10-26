@@ -54,6 +54,7 @@
 		B8171F7C218262180010B547 /* AutoLayout */ = {
 			isa = PBXGroup;
 			children = (
+				B8171F8F2183A6340010B547 /* Views */,
 				B8171F7D218262180010B547 /* AppDelegate.swift */,
 				B8171F7F218262180010B547 /* ViewController.swift */,
 				B8171F81218262180010B547 /* Main.storyboard */,
@@ -62,6 +63,13 @@
 				B8171F892182621A0010B547 /* Info.plist */,
 			);
 			path = AutoLayout;
+			sourceTree = "<group>";
+		};
+		B8171F8F2183A6340010B547 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
