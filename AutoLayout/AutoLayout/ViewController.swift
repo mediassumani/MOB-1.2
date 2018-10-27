@@ -10,108 +10,64 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        
-       
-       setUpPurpleView()
-       setUpBlue()
-        
-        
-        
+        view.addSubview(schoolDescriptionTextView)
+        view.addSubview(topImageContainerView)
+        topImageContainerView.addSubview(makeSchoolImageView)
+        layoutSchoolLogo()
+        layoutSchoolDescription()
     }
     
-    // This functions sets up the contraints of
-    func setUpPurpleView(){
+    // creates a container that will hold the logo
+    let topImageContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    // creates an image view that holds the school logo
+    let makeSchoolImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "MakeSchoolLogo"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    
+    // creates a text view that contains the a short description
+    let schoolDescriptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "College designed for the 21st Century"
+        textView.font = UIFont.boldSystemFont(ofSize: 18)
+        textView.textAlignment = .center
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
+    
+    private func layoutSchoolDescription(){
         
-        // Constraints and properties for the purple view
-        let purpleView = UIView()
-        purpleView.backgroundColor = UIColor.purple
-        purpleView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(purpleView)
-        // Leading constraint
-        let purpleViewLeadingConstraint = NSLayoutConstraint(item: purpleView,
-                                                             attribute: .leading,
-                                                             relatedBy: .equal,
-                                                             toItem: self.view,
-                                                             attribute: .leading,
-                                                             multiplier: 1,
-                                                             constant: 20)
-        
-        // Trailing constraint
-        let purpleViewTrailingContraint = NSLayoutConstraint(item: purpleView,
-                                                             attribute: .trailing,
-                                                             relatedBy: .equal,
-                                                             toItem: self.view,
-                                                             attribute: .trailing,
-                                                             multiplier: 0.5,
-                                                             constant: 0)
-        
-        // Top Constraint
-        let purpleViewTopConstraint = NSLayoutConstraint(item: purpleView,
-                                                         attribute: .top,
-                                                         relatedBy: .equal,
-                                                         toItem: self.view,
-                                                         attribute: .top,
-                                                         multiplier: 1,
-                                                         constant: 20)
-        
-        
-        // Bottom Constraint
-        let purpleViewBottomConstraint = NSLayoutConstraint(item: purpleView,
-                                                            attribute: .bottom,
-                                                            relatedBy: .equal,
-                                                            toItem: self.view,
-                                                            attribute: .bottom,
-                                                            multiplier: 1,
-                                                            constant: -50)
-        self.view.addConstraints([purpleViewLeadingConstraint, purpleViewTrailingContraint, purpleViewTopConstraint,purpleViewBottomConstraint])
-        
+        schoolDescriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
+        schoolDescriptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        schoolDescriptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        schoolDescriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
     
-    func setUpBlue(){
-
-        let blueView = UIView()
-        blueView.backgroundColor = UIColor.cyan
-        self.view.addSubview(blueView)
-
-        // Leading Constraint
-        let blueLeadingConstraint = NSLayoutConstraint(item: blueView,
-                                                       attribute: .leading,
-                                                       relatedBy: .equal,
-                                                       toItem: self.view,
-                                                       attribute: .leading,
-                                                       multiplier: 1,
-                                                       constant: 1)
+    private func layoutSchoolLogo(){
         
-        // Trailing Constraint
-        let blueTrailingConstraint = NSLayoutConstraint(item: blueView,
-                                                        attribute: .trailing,
-                                                        relatedBy: .equal,
-                                                        toItem: self.view,
-                                                        attribute: .trailing,
-                                                        multiplier: 1,
-                                                        constant: 1)
+        topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
         
-        let blueTopConstraint = NSLayoutConstraint(item: blueView,
-                                                   attribute: .top,
-                                                   relatedBy: .equal,
-                                                   toItem: self.view,
-                                                   attribute: .top,
-                                                   multiplier: 1,
-                                                   constant: 1)
-        
-        let blueBottomConstraint = NSLayoutConstraint(item: blueView,
-                                                      attribute: .bottom,
-                                                      relatedBy: .equal,
-                                                      toItem: self.view,
-                                                      attribute: .bottom,
-                                                      multiplier: 1,
-                                                      constant: 1)
-        self.view.addConstraints([blueTopConstraint, blueBottomConstraint, blueLeadingConstraint, blueTrailingConstraint])
+        makeSchoolImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
+        makeSchoolImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
+        makeSchoolImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, constant: 0.5).isActive = true
     }
-    
 }
 
