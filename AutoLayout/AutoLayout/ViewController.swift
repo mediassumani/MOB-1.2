@@ -28,9 +28,10 @@ class ViewController: UIViewController {
         return view
     }()
     
+    
     // creates an image view that holds the school logo
     let makeSchoolImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "MakeSchoolLogo"))
+        let imageView = UIImageView(image: UIImage(named: "old_logo2"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -40,8 +41,14 @@ class ViewController: UIViewController {
     // creates a text view that contains the a short description
     let schoolDescriptionTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "College designed for the 21st Century"
-        textView.font = UIFont.boldSystemFont(ofSize: 18)
+        let attributedText = NSMutableAttributedString(string: "College designed for the 21st Century",
+                                                attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
+        
+        attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science immersed in a community of makers empowered to shape the world", attributes:
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
+             NSAttributedString.Key.foregroundColor: UIColor.gray]))
+        
+        textView.attributedText = attributedText
         textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false
@@ -67,7 +74,9 @@ class ViewController: UIViewController {
         
         makeSchoolImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
         makeSchoolImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
-        makeSchoolImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, constant: 0.5).isActive = true
+        makeSchoolImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.5).isActive = true
+        makeSchoolImageView.widthAnchor.constraint(equalTo: topImageContainerView.widthAnchor, multiplier: 0.5).isActive = true
+
     }
 }
 
