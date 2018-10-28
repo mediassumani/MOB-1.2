@@ -42,10 +42,12 @@ class ViewController: UIViewController {
     
     private func setUpBlueView(){
         
-        blueView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        blueView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        blueView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        NSLayoutConstraint.activate([blueView.topAnchor.constraint(equalTo: view.topAnchor),
+                                     blueView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     blueView.bottomAnchor.constraint(equalToSystemSpacingBelow: greenView.topAnchor, multiplier: 30),
+                                     blueView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)])
+
     }
     
     private func setUpGreenView(){
@@ -53,8 +55,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([greenView.topAnchor.constraint(equalTo: blueView.bottomAnchor),
                                     greenView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                                     greenView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                    greenView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                                    ])
+                                    greenView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
     }
 }
 
