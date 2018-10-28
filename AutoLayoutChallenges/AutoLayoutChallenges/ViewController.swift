@@ -10,6 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(blueView)
+        view.addSubview(greenView)
+        setUpBlueView()
+        setUpGreenView()
+        
+    }
+    
     let blueView: UIView = {
         
         let view = UIView()
@@ -22,28 +34,27 @@ class ViewController: UIViewController {
         
         let view = UIView()
         view.backgroundColor = .green
-        view.translatesAutoresizingMaskIntoConstraints = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-       
-        view.addSubview(blueView)
-        view.addSubview(greenView)
-        
-    }
-    
     
     private func setUpBlueView(){
         
+        blueView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        blueView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        blueView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
     }
     
-    private func setUpRedView(){
+    private func setUpGreenView(){
         
+        NSLayoutConstraint.activate([greenView.topAnchor.constraint(equalTo: blueView.bottomAnchor),
+                                    greenView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                    greenView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                    greenView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+                                    ])
     }
-
 }
 
