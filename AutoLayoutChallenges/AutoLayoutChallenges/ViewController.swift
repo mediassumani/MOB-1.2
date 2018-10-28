@@ -42,20 +42,24 @@ class ViewController: UIViewController {
     
     private func setUpBlueView(){
         
-        NSLayoutConstraint.activate([blueView.topAnchor.constraint(equalTo: view.topAnchor),
+        NSLayoutConstraint.activate([blueView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
                                      blueView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                                      blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                     blueView.bottomAnchor.constraint(equalToSystemSpacingBelow: greenView.topAnchor, multiplier: 30),
-                                     blueView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)])
+                                     blueView.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: 100),
+                                     blueView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+                                     blueView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)])
+        
 
     }
     
     private func setUpGreenView(){
         
-        NSLayoutConstraint.activate([greenView.topAnchor.constraint(equalTo: blueView.bottomAnchor),
-                                    greenView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        NSLayoutConstraint.activate([greenView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
+                                    greenView.leadingAnchor.constraint(equalToSystemSpacingAfter: blueView.trailingAnchor, multiplier: 10),
                                     greenView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                    greenView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
+                                    greenView.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: 100),
+                                    greenView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+                                    greenView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)])
     }
 }
 
