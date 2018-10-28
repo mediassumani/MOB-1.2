@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         let attributedText = NSMutableAttributedString(string: "College designed for the 21st Century",
                                                 attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
         
-        attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science immersed in a community of makers empowered to shape the world", attributes:
+        attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science in a community of makers empowered to shape the world", attributes:
             [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
              NSAttributedString.Key.foregroundColor: UIColor.gray]))
         
@@ -60,8 +60,8 @@ class ViewController: UIViewController {
     private func layoutSchoolDescription(){
         
         schoolDescriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
-        schoolDescriptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        schoolDescriptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        schoolDescriptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        schoolDescriptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         schoolDescriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
     
