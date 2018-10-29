@@ -10,16 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(blueView)
-        view.addSubview(greenView)
+        view.addSubview(container)
+        container.addSubview(blueView)
+        setUpContainerView()
         setUpBlueView()
-        setUpGreenView()
-        
     }
     
     let blueView: UIView = {
@@ -38,17 +35,31 @@ class ViewController: UIViewController {
         return view
     }()
     
+    let container: UIView = {
+        
+        let view = UIView()
+        view.backgroundColor = .orange
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
+    private func setUpContainerView(){
+        
+        NSLayoutConstraint.activate([container.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     container.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+                                     container.heightAnchor.constraint(equalToConstant: 120),
+                                     container.widthAnchor.constraint(equalToConstant: 250)])
+    }
     
     private func setUpBlueView(){
         
-        NSLayoutConstraint.activate([blueView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
-                                     blueView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     blueView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                     blueView.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: 100),
-                                     blueView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
-                                     blueView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)])
         
+        
+        NSLayoutConstraint.activate([blueView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+                                     blueView.topAnchor.constraint(equalTo: container.topAnchor),
+                                     blueView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+                                     blueView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10),
+                                     blueView.trailingAnchor.constraint(lessThanOrEqualTo: container.trailingAnchor, constant: -50)])
 
     }
     
