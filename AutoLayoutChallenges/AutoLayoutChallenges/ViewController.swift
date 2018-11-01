@@ -15,8 +15,10 @@ class ViewController: UIViewController {
         
         view.addSubview(container)
         container.addSubview(profileImageView)
+        container.addSubview(studentNameLabel)
         setUpContainerView()
         setUpProfileImageView()
+        setUpStudentNameLabel()
 
     }
     
@@ -30,20 +32,37 @@ class ViewController: UIViewController {
         imageView.layer.shadowRadius = 1
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+        
     }()
     
-    let greenView: UIView = {
+    let studentNameLabel: UITextView = {
         
-        let view = UIView()
-        view.backgroundColor = .green
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let textView = UITextView()
+        let attributedText = NSMutableAttributedString(string: "Medi Assumani",
+                                                       attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
+        
+        
+        textView.attributedText = attributedText
+        textView.textAlignment = .center
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
+    let studentTrackLabel: UILabel = {
+        
+        let label = UILabel()
+        label.text = "Mobile iOS"
+        label.textColor = .black
+        label.textAlignment = .center
+        return label
     }()
     
     let container: UIView = {
         
         let view = UIView()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -64,13 +83,17 @@ class ViewController: UIViewController {
             ])
     }
     
-    private func setUpGreenView(){
+    private func setUpStudentNameLabel(){
         
-        NSLayoutConstraint.activate([greenView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
-                                     greenView.heightAnchor.constraint(equalTo: container.heightAnchor, multiplier: 1),
-                                     greenView.widthAnchor.constraint(equalTo: container.heightAnchor, multiplier: 1),
-                                     greenView.trailingAnchor.constraint(equalTo: container.trailingAnchor)
+        NSLayoutConstraint.activate([studentNameLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+                                     studentNameLabel.topAnchor.constraint(equalTo: container.topAnchor),
+                                     studentNameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
+                                     //studentNameLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 1)
                                      ])
+    }
+    
+    private func setUpStudentTrackLabel(){
+        
     }
 }
 
