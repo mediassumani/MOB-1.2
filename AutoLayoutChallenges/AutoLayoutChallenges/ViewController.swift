@@ -40,6 +40,9 @@ class ViewController: UIViewController {
         let textView = UITextView()
         let attributedText = NSMutableAttributedString(string: "Medi Assumani",
                                                        attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
+        attributedText.append(NSAttributedString(string: "\n\nMobile iOS", attributes:
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
+             NSAttributedString.Key.foregroundColor: UIColor.gray]))
         
         
         textView.attributedText = attributedText
@@ -50,14 +53,6 @@ class ViewController: UIViewController {
         return textView
     }()
     
-    let studentTrackLabel: UILabel = {
-        
-        let label = UILabel()
-        label.text = "Mobile iOS"
-        label.textColor = .black
-        label.textAlignment = .center
-        return label
-    }()
     
     let container: UIView = {
         
@@ -85,15 +80,11 @@ class ViewController: UIViewController {
     
     private func setUpStudentNameLabel(){
         
-        NSLayoutConstraint.activate([studentNameLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-                                     studentNameLabel.topAnchor.constraint(equalTo: container.topAnchor),
+        NSLayoutConstraint.activate([studentNameLabel.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+                                     studentNameLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 15),
                                      studentNameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
                                      //studentNameLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 1)
                                      ])
-    }
-    
-    private func setUpStudentTrackLabel(){
-        
     }
 }
 
