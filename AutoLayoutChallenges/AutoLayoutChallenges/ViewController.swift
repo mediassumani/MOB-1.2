@@ -14,17 +14,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(container)
-        container.addSubview(blueView)
+        container.addSubview(profileImageView)
         setUpContainerView()
-        setUpBlueView()
+        setUpProfileImageView()
+
     }
     
-    let blueView: UIView = {
+    let profileImageView: UIImageView = {
         
-        let view = UIView()
-        view.backgroundColor = .blue
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "profile")
+        imageView.layer.cornerRadius = 60
+        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
+        imageView.layer.shadowRadius = 1
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     let greenView: UIView = {
@@ -38,7 +43,7 @@ class ViewController: UIViewController {
     let container: UIView = {
         
         let view = UIView()
-        view.backgroundColor = .orange
+        view.backgroundColor = .yellow
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -48,29 +53,24 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([container.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      container.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
                                      container.heightAnchor.constraint(equalToConstant: 120),
-                                     container.widthAnchor.constraint(equalToConstant: 250)])
+                                     container.widthAnchor.constraint(equalToConstant: 300)])
     }
     
-    private func setUpBlueView(){
+    private func setUpProfileImageView(){
         
-        
-        
-        NSLayoutConstraint.activate([blueView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
-                                     blueView.topAnchor.constraint(equalTo: container.topAnchor),
-                                     blueView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-                                     blueView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10),
-                                     blueView.trailingAnchor.constraint(lessThanOrEqualTo: container.trailingAnchor, constant: -50)])
-
+        NSLayoutConstraint.activate([profileImageView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+                                    profileImageView.heightAnchor.constraint(equalTo: container.heightAnchor, multiplier: 1),
+                                    profileImageView.widthAnchor.constraint(equalTo: container.heightAnchor, multiplier: 1)
+            ])
     }
     
     private func setUpGreenView(){
         
-        NSLayoutConstraint.activate([greenView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
-                                    greenView.leadingAnchor.constraint(equalToSystemSpacingAfter: blueView.trailingAnchor, multiplier: 10),
-                                    greenView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                    greenView.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: 100),
-                                    greenView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
-                                    greenView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2)])
+        NSLayoutConstraint.activate([greenView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+                                     greenView.heightAnchor.constraint(equalTo: container.heightAnchor, multiplier: 1),
+                                     greenView.widthAnchor.constraint(equalTo: container.heightAnchor, multiplier: 1),
+                                     greenView.trailingAnchor.constraint(equalTo: container.trailingAnchor)
+                                     ])
     }
 }
 
