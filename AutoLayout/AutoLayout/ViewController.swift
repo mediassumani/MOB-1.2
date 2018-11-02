@@ -57,14 +57,24 @@ class ViewController: UIViewController {
         return textView
     }()
     
+    // creates a button to go backward
     let previousButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Prev", for: .normal)
+        button.setTitle("Previous", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    // creates a button to go foward
+    let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Next", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     
+    /// Function to constraint the school description textview
     private func layoutSchoolDescription(){
         
         schoolDescriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
@@ -73,6 +83,7 @@ class ViewController: UIViewController {
         schoolDescriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
     
+    /// Function to constraint the school logo
     private func layoutSchoolLogo(){
         
         topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -87,21 +98,23 @@ class ViewController: UIViewController {
 
     }
     
+    /// Function to layout up the next and previous button
     private func setUpButtonControls(){
         //view.addSubview(previousButton)
         previousButton.backgroundColor = .red
         
         let yellowView = UIView()
         let blueView = UIView()
+        let greenView = UIView()
         
         yellowView.backgroundColor = .yellow
         blueView.backgroundColor = .blue
+        greenView.backgroundColor = .green
         
-        let bottomControlsStackView = UIStackView(arrangedSubviews: [yellowView,blueView])
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [yellowView,blueView, greenView])
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomControlsStackView.axis = .horizontal
         bottomControlsStackView.distribution = .fillEqually
-        bottomControlsStackView.alignment = .center
         view.addSubview(bottomControlsStackView)
         
         NSLayoutConstraint.activate([
