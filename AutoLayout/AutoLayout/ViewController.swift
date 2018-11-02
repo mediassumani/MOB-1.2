@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         topImageContainerView.addSubview(makeSchoolImageView)
         layoutSchoolLogo()
         layoutSchoolDescription()
+        setUpButtonControls()
     }
     
     // creates a container that will hold the logo
@@ -56,6 +57,13 @@ class ViewController: UIViewController {
         return textView
     }()
     
+    let previousButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Prev", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     
     private func layoutSchoolDescription(){
         
@@ -77,6 +85,18 @@ class ViewController: UIViewController {
         makeSchoolImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.5).isActive = true
         makeSchoolImageView.widthAnchor.constraint(equalTo: topImageContainerView.widthAnchor, multiplier: 0.5).isActive = true
 
+    }
+    
+    private func setUpButtonControls(){
+        view.addSubview(previousButton)
+        previousButton.backgroundColor = .red
+        NSLayoutConstraint.activate([
+            previousButton.topAnchor.constraint(equalTo: view.topAnchor),
+            previousButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            previousButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            previousButton.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        
     }
 }
 
