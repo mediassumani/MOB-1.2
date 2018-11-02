@@ -88,15 +88,28 @@ class ViewController: UIViewController {
     }
     
     private func setUpButtonControls(){
-        view.addSubview(previousButton)
+        //view.addSubview(previousButton)
         previousButton.backgroundColor = .red
-        NSLayoutConstraint.activate([
-            previousButton.topAnchor.constraint(equalTo: view.topAnchor),
-            previousButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            previousButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            previousButton.heightAnchor.constraint(equalToConstant: 50)
-            ])
         
+        let yellowView = UIView()
+        let blueView = UIView()
+        
+        yellowView.backgroundColor = .yellow
+        blueView.backgroundColor = .blue
+        
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [yellowView,blueView])
+        bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
+        bottomControlsStackView.axis = .horizontal
+        bottomControlsStackView.distribution = .fillEqually
+        bottomControlsStackView.alignment = .center
+        view.addSubview(bottomControlsStackView)
+        
+        NSLayoutConstraint.activate([
+            bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
+            ])
     }
 }
 
