@@ -91,10 +91,6 @@ open class CurrencyDataViewController: UIViewController, JBLineChartViewDataSour
     if let prices = prices {
       let pricesNSArray = prices as NSArray
       let maxPrice = pricesNSArray.value(forKeyPath: "@max.value") as! NSNumber
-      lineChartView.maximumValue = CGFloat(maxPrice.floatValue * 1.02)
-      DispatchQueue.main.async { [weak self] in
-        self?.lineChartView.reloadData()
-      }
 
     }
   }

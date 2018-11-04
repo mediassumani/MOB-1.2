@@ -40,8 +40,8 @@ class ViewController: CurrencyDataViewController {
     lineChartView.dataSource = self
     lineChartView.delegate = self
     
-    priceOnDayLabel.text = ""
-    dayLabel.text = ""
+    priceOnDayLabel.text = "__"
+    dayLabel.text = "__"
   }
   
   override func viewWillAppear(_ animated: Bool)  {
