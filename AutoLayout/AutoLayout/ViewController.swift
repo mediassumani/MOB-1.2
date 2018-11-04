@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     let schoolDescriptionTextView: UITextView = {
         let textView = UITextView()
         let attributedText = NSMutableAttributedString(string: "College designed for the 21st Century",
-                                                attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
+                                                       attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
         
         attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science in a community of makers empowered to shape the world", attributes:
             [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
@@ -57,22 +57,37 @@ class ViewController: UIViewController {
         return textView
     }()
     
-    // creates a button to go backward
+    // creates and styles the button to go backward
     let previousButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Previous", for: .normal)
+        button.setTitle("PREV", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.gray, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
     
-    // creates a button to go foward
+    // creates and styles the button to go foward
     let nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Next", for: .normal)
+        button.setTitle("NEXT", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.blue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
+    
+    // creates and lays out the page controller
+    let pageControll: UIPageControl = {
+        let pageController = UIPageControl()
+        pageController.currentPage = 0
+        pageController.numberOfPages = 4
+        pageController.currentPageIndicatorTintColor = .red
+        pageController.pageIndicatorTintColor = .gray
+        return pageController
+    }()
     
     /// Function to constraint the school description textview
     private func layoutSchoolDescription(){
@@ -100,18 +115,11 @@ class ViewController: UIViewController {
     
     /// Function to layout up the next and previous button
     private func setUpButtonControls(){
-        //view.addSubview(previousButton)
-        previousButton.backgroundColor = .red
         
-        let yellowView = UIView()
-        let blueView = UIView()
-        let greenView = UIView()
+//        let greenView = UIView()
+//        greenView.backgroundColor = .green
         
-        yellowView.backgroundColor = .yellow
-        blueView.backgroundColor = .blue
-        greenView.backgroundColor = .green
-        
-        let bottomControlsStackView = UIStackView(arrangedSubviews: [yellowView,blueView, greenView])
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControll, nextButton])
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomControlsStackView.axis = .horizontal
         bottomControlsStackView.distribution = .fillEqually
