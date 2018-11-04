@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     // creates an image view that holds the school logo
     let makeSchoolImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "old_logo2"))
+        let imageView = UIImageView(image: UIImage(named: "new_logo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         let attributedText = NSMutableAttributedString(string: "College designed for the 21st Century",
                                                        attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
         
-        attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science in a community of makers empowered to shape the world", attributes:
+        attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science in a community of makers empowered to shape the world.", attributes:
             [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
              NSAttributedString.Key.foregroundColor: UIColor.gray]))
         
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("NEXT", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.gloomyBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         let pageController = UIPageControl()
         pageController.currentPage = 0
         pageController.numberOfPages = 4
-        pageController.currentPageIndicatorTintColor = .red
+        pageController.currentPageIndicatorTintColor = .gloomyBlue
         pageController.pageIndicatorTintColor = .gray
         return pageController
     }()
@@ -129,8 +129,7 @@ class ViewController: UIViewController {
             bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
-            ])
+            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)])
     }
 }
 

@@ -12,6 +12,8 @@
 		B8171F83218262180010B547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8171F81218262180010B547 /* Main.storyboard */; };
 		B8171F852182621A0010B547 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8171F842182621A0010B547 /* Assets.xcassets */; };
 		B8171F882182621A0010B547 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8171F862182621A0010B547 /* LaunchScreen.storyboard */; };
+		B8F21BD3218E852A005398BE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F21BD2218E852A005398BE /* UIColor+Extension.swift */; };
+		B8F21BD5218E8B55005398BE /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F21BD4218E8B55005398BE /* SwipingController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		B8171F842182621A0010B547 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8171F872182621A0010B547 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8171F892182621A0010B547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8F21BD2218E852A005398BE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		B8F21BD4218E8B55005398BE /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				B8171F842182621A0010B547 /* Assets.xcassets */,
 				B8171F862182621A0010B547 /* LaunchScreen.storyboard */,
 				B8171F892182621A0010B547 /* Info.plist */,
+				B8F21BD2218E852A005398BE /* UIColor+Extension.swift */,
+				B8F21BD4218E8B55005398BE /* SwipingController.swift */,
 			);
 			path = AutoLayout;
 			sourceTree = "<group>";
@@ -143,8 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8F21BD3218E852A005398BE /* UIColor+Extension.swift in Sources */,
 				B8171F80218262180010B547 /* ViewController.swift in Sources */,
 				B8171F7E218262180010B547 /* AppDelegate.swift in Sources */,
+				B8F21BD5218E8B55005398BE /* SwipingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
