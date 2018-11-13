@@ -11,10 +11,20 @@ import UIKit
 class ViewController: UIViewController {
 
     var entries: [MoodEntry] = []
+    @IBOutlet weak var moondEntriesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let goodEntry = MoodEntry(mood: .good, date: Date())
+        let badEntry = MoodEntry(mood: .bad, date: Date())
+        let neutralEntry = MoodEntry(mood: .neutral, date: Date())
+        
+        entries = [goodEntry, badEntry, neutralEntry]
+        moondEntriesTableView.reloadData()
+        
+        self.moondEntriesTableView.delegate = self as UITableViewDelegate
+        self.moondEntriesTableView.dataSource = self as UITableViewDataSource
     }
 
 
@@ -24,6 +34,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(entries.count)
         return entries.count
     }
     
@@ -33,7 +44,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         let entry = entries[indexPath.row]
         cell.textLabel?.text = entry.mood.stringValue
         cell.detailTextLabel?.text = String()
-        
         
         return cell
     }
