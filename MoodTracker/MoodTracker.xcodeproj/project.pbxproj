@@ -12,6 +12,8 @@
 		B8BE9BB42194F57200704489 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BE9BB22194F57200704489 /* Main.storyboard */; };
 		B8BE9BB62194F57400704489 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8BE9BB52194F57400704489 /* Assets.xcassets */; };
 		B8BE9BB92194F57400704489 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BE9BB72194F57400704489 /* LaunchScreen.storyboard */; };
+		B8BE9BC12194F62500704489 /* MoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BE9BC02194F62500704489 /* MoodEntry.swift */; };
+		B8E11917219B76CF009BBFCF /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E11916219B76CF009BBFCF /* Mood.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		B8BE9BB52194F57400704489 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8BE9BB82194F57400704489 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8BE9BBA2194F57400704489 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8BE9BC02194F62500704489 /* MoodEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEntry.swift; sourceTree = "<group>"; };
+		B8E11916219B76CF009BBFCF /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,9 @@
 		B8BE9BAD2194F57200704489 /* MoodTracker */ = {
 			isa = PBXGroup;
 			children = (
+				B8E11914219B76A3009BBFCF /* Controllers */,
+				B8E11913219B7699009BBFCF /* Views */,
+				B8E11912219B7691009BBFCF /* Models */,
 				B8BE9BAE2194F57200704489 /* AppDelegate.swift */,
 				B8BE9BB02194F57200704489 /* ViewController.swift */,
 				B8BE9BB22194F57200704489 /* Main.storyboard */,
@@ -62,6 +69,29 @@
 				B8BE9BBA2194F57400704489 /* Info.plist */,
 			);
 			path = MoodTracker;
+			sourceTree = "<group>";
+		};
+		B8E11912219B7691009BBFCF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B8BE9BC02194F62500704489 /* MoodEntry.swift */,
+				B8E11916219B76CF009BBFCF /* Mood.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B8E11913219B7699009BBFCF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B8E11914219B76A3009BBFCF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +165,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E11917219B76CF009BBFCF /* Mood.swift in Sources */,
 				B8BE9BB12194F57200704489 /* ViewController.swift in Sources */,
 				B8BE9BAF2194F57200704489 /* AppDelegate.swift in Sources */,
+				B8BE9BC12194F62500704489 /* MoodEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
