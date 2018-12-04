@@ -105,16 +105,17 @@ class ViewController: UIViewController {
         case "unwind from save":
             let newMood: Mood = detailedEntryViewController.mood
             let newDate: Date = detailedEntryViewController.date
-            if detailedEntryViewController.isEditing{
-                guard let selectedIndexPath = moondEntriesTableView.indexPathForSelectedRow else {return}
+            if detailedEntryViewController.isEditingEntry {
+                guard let selectedIndexPath = moondEntriesTableView.indexPathForSelectedRow else { return }
+                print("from save button and editing an existing entry")
                 updateEntry(mood: newMood, date: newDate, at: selectedIndexPath.row)
-            }else{
-                createEntry(mood: newMood, date: newDate)
             }
-            
+            else {
+                createEntry(mood: newMood, date: newDate)
+                print("from save button and adding a new entry")
+            }
         case "unwind from cancel":
-            print("cancel button pressed")
-            
+            print("from cancel button")
         default:
             break
         }
@@ -145,7 +146,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         let destinationVC = MoodDetailedViewController()
         destinationVC.mood = selectedEntry.mood
         destinationVC.date = selectedEntry.date
-        self.present(destinationVC, animated: true, completion: nil)
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

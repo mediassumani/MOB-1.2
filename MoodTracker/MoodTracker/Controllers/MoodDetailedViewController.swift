@@ -12,6 +12,7 @@ class MoodDetailedViewController: UIViewController {
 
     var date: Date!
     var mood: Mood!
+    var isEditingEntry = false
     
     @IBOutlet weak var buttonAmazingMood: UIButton!
     @IBOutlet weak var buttonGoodMood: UIButton!
@@ -19,7 +20,6 @@ class MoodDetailedViewController: UIViewController {
     @IBOutlet weak var buttonBadMood: UIButton!
     @IBOutlet weak var buttonTerribleMood: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
     
     
     override func viewDidLoad() {
@@ -34,8 +34,10 @@ class MoodDetailedViewController: UIViewController {
         datePicker.date = date
     }
     
+    
     private func updateMood(to newMood: Mood) {
         let unselectedColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        guard let unwrappedAmazingButton = self.buttonAmazingMood, let unwrappedGoodButton = buttonGoodMood, let unwrappedNeutralButton = self.buttonNeutralMood, let unwrappedBadButton = buttonBadMood, let unwrappedTerribleButton = buttonTerribleMood else {return}
         switch newMood {
         case .none:
             buttonAmazingMood.backgroundColor = unselectedColor
@@ -50,7 +52,7 @@ class MoodDetailedViewController: UIViewController {
             buttonBadMood.backgroundColor = unselectedColor
             buttonTerribleMood.backgroundColor = unselectedColor
         case .good:
-            buttonAmazingMood.backgroundColor = unselectedColor
+            unwrappedAmazingButton.backgroundColor = unselectedColor
             buttonGoodMood.backgroundColor = newMood.colorValue
             buttonNeutralMood.backgroundColor = unselectedColor
             buttonBadMood.backgroundColor = unselectedColor
@@ -103,6 +105,7 @@ class MoodDetailedViewController: UIViewController {
     }
     
     @IBAction func pressSave(_ sender: Any) {
+        isEditingEntry = true
         performSegue(withIdentifier: "unwind from save", sender: nil)
     }
     
