@@ -11,12 +11,11 @@ import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    @IBOutlet weak var defaultMap: MKMapView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.defaultMap.delegate = self as? MKMapViewDelegate
+        //self.defaultMap.delegate = self as? MKMapViewDelegate
+        let map = MKMapView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         
         let london = Capital(title: "London", coordinate: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), info: "Home to the 2012 Summer Olympics.")
         let oslo = Capital(title: "Oslo", coordinate: CLLocationCoordinate2D(latitude: 59.95, longitude: 10.75), info: "Founded over a thousand years ago.")
@@ -27,7 +26,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let kinshasa = Capital(title: "Kinshasa", coordinate: CLLocationCoordinate2D(latitude: 4.4419, longitude: 15.2663), info: "The capital of the DRC")
         
         
-        defaultMap.addAnnotations([london, oslo, paris, rome, washington, kinshasa])
+        map.addAnnotations([london, oslo, paris, rome, washington, kinshasa])
+        self.view.addSubview(map)
         
     }
     
@@ -70,8 +70,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
-
-
 
 }
 

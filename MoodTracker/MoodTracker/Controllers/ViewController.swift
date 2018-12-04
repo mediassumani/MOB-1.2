@@ -32,6 +32,14 @@ class ViewController: UIViewController {
         self.moondEntriesTableView.dataSource = self as UITableViewDataSource
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectedIndexPath = moondEntriesTableView.indexPathForSelectedRow {
+            moondEntriesTableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
+    }
+    
     
     @IBAction func pressAddEntry(_ sender: UIBarButtonItem) {
         
@@ -40,6 +48,27 @@ class ViewController: UIViewController {
         entries.insert(newMood, at: 0)
         moondEntriesTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
+    
+    
+    
+    func createEntry(mood: Mood, date: Date) {
+        let newEntry = MoodEntry(mood: mood, date: date)
+        entries.insert(newEntry, at: 0)
+        moondEntriesTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+    }
+    
+    
+    func updateEntry(mood: Mood, date: Date, at index: Int) {
+        entries[index].mood = mood
+        entries[index].date = date
+        moondEntriesTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    }
+    
+    func deleteEntry(at index: Int) {
+        entries.remove(at: index)
+        moondEntriesTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
@@ -64,6 +93,32 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func unwindToHome(_ segue: UIStoryboardSegue){
+        
+        guard let identifier = segue.identifier else {return}
+        guard let detailedEntryViewController = segue.source as? MoodDetailedViewController else {
+            return print("storyboard unwind segue not set up correctly")
+        }
+        
+        switch identifier{
+            
+        case "unwind from save":
+            let newMood: Mood = detailedEntryViewController.mood
+            let newDate: Date = detailedEntryViewController.date
+            if detailedEntryViewController.isEditing{
+                guard let selectedIndexPath = moondEntriesTableView.indexPathForSelectedRow else {return}
+                updateEntry(mood: newMood, date: newDate, at: selectedIndexPath.row)
+            }else{
+                createEntry(mood: newMood, date: newDate)
+            }
+            
+        case "unwind from cancel":
+            print("cancel button pressed")
+            
+        default:
+            break
+        }
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
@@ -87,7 +142,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedEntry = entries[indexPath.row]
-        print("Selected mood was \(selectedEntry.mood.stringValue)")
+        let destinationVC = MoodDetailedViewController()
+        destinationVC.mood = selectedEntry.mood
+        destinationVC.date = selectedEntry.date
+        self.present(destinationVC, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            deleteEntry(at: indexPath.row)
+        }
     }
 }
 

@@ -12,4 +12,10 @@ import UIKit.UIColor
 struct MoodEntry {
     var mood: Mood
     var date: Date
+    
+    init(mood: Mood, date: Date) {
+        
+        self.mood = mood
+        self.date = date
+    }
 }
