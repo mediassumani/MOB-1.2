@@ -77,7 +77,7 @@ class ViewController: UIViewController {
                 guard
                     let selectedCell = sender as? UITableViewCell,
                     let indexPath = moondEntriesTableView.indexPath(for: selectedCell) else {
-                        return print("failed to locate index path from sender")
+                    return print("failed to locate index path from sender")
                 }
                 
                 guard let entryDetailsViewController = segue.destination as? MoodDetailedViewController else {
@@ -87,10 +87,19 @@ class ViewController: UIViewController {
                 let entry = entries[indexPath.row]
                 entryDetailsViewController.mood = entry.mood
                 entryDetailsViewController.date = entry.date
+                entryDetailsViewController.isEditingEntry = true
                 
-            default: break
+            case "show new entry":
+                guard let entryDetailsViewController = segue.destination as? MoodDetailedViewController else {
+                    
+                    //NOTE: error handling
+                    return print("storyboard not set up correctly, 'show entry details' segue needs to segue to a 'MoodDetailedViewController'")
             }
+            
+            default: break
         }
+      }
+        
     }
     
     @IBAction func unwindToHome(_ segue: UIStoryboardSegue){
