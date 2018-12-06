@@ -9,35 +9,45 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Main Menu View Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchMoodTracker" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="MainMenuViewController" customModule="WatchMoodTracker_Extension">
                     <items>
-                        <label width="136" height="107" alignment="left" text="How are you feeling today?" id="Yga-aY-Q9c">
+                        <label width="1" height="1" alignment="left" text="How are you feeling today?" id="Yga-aY-Q9c">
                             <fontDescription key="font" type="system" weight="ultraLight" pointSize="10"/>
                         </label>
                     </items>
                 </controller>
             </objects>
         </scene>
-        <!--Interface Controller-->
+        <!--Mood Table View Controller-->
         <scene sceneID="Ahz-WF-7cf">
             <objects>
-                <controller id="bLW-qT-XWF">
+                <controller id="bLW-qT-XWF" customClass="MoodTableViewController" customModule="WatchMoodTracker_Extension">
                     <items>
                         <table alignment="left" id="OHG-WU-cFH">
                             <items>
-                                <tableRow id="jnR-1o-USa">
+                                <tableRow identifier="mood cell identifier" id="jnR-1o-USa" customClass="MoodRowView" customModule="WatchMoodTracker_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="Ika-LS-zl4">
                                         <items>
                                             <imageView width="0.29999999999999999" alignment="left" verticalAlignment="center" id="cne-h0-E6a"/>
+                                            <label alignment="left" text="Mood Label" id="Pi1-fb-Tyk">
+                                                <fontDescription key="font" type="system" weight="ultraLight" pointSize="12"/>
+                                            </label>
                                         </items>
                                     </group>
+                                    <connections>
+                                        <outlet property="moodImageView" destination="cne-h0-E6a" id="hq3-o8-LbR"/>
+                                        <outlet property="moodNameLabel" destination="Pi1-fb-Tyk" id="YNt-jb-Cu8"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <connections>
+                        <outlet property="moodTableView" destination="OHG-WU-cFH" id="Ags-M4-OGF"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="373" y="105"/>
