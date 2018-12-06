@@ -143,9 +143,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mood entry cell", for: indexPath) as! MoodEntryTableViewCell
         let entry = entries[indexPath.row]
-        cell.labelMoodTitle.text = entry.mood.stringValue
-        cell.imageViewMoodColor.backgroundColor = entry.mood.colorValue
-        cell.labelMoodDate.text = String(describing: entry.date)
+        cell.configure(entry.mood)
         
         return cell
     }
@@ -160,8 +158,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .delete{
+        switch editingStyle{
+        case .delete:
             deleteEntry(at: indexPath.row)
+            
+        default:
+            break
         }
     }
 }

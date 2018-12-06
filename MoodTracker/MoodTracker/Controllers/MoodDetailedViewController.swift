@@ -30,8 +30,10 @@ class MoodDetailedViewController: UIViewController {
     
     
     private func updateUI() {
-        updateMood(to: mood)
-        datePicker.date = date
+        
+        guard let unwrappedMood = self.mood, let unwrappedDate = self.date else {return}
+        updateMood(to: unwrappedMood)
+        datePicker.date = unwrappedDate
     }
     
     
@@ -110,7 +112,7 @@ class MoodDetailedViewController: UIViewController {
     }
     
     @IBAction func pressCancel(_ sender: Any) {
-        
+        performSegue(withIdentifier: "unwind from cancel", sender: nil)
     }
     
 }

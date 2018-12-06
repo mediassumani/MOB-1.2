@@ -26,5 +26,11 @@ class MoodEntryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configure(_ entry: Mood) {
+        imageViewMoodColor.backgroundColor = entry.colorValue
+        labelMoodTitle.text = entry.stringValue
+        labelMoodDate.text = entry.stringValue
+    }
 
 }

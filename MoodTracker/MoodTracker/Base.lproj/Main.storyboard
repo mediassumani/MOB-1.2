@@ -204,6 +204,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3Wg-Ru-SV4">
                             <connections>
                                 <action selector="pressCancel:" destination="kfc-HV-Bvx" id="yMT-cJ-28F"/>
+                                <segue destination="zIR-ET-pVF" kind="unwind" identifier="unwind from cancel" unwindAction="unwindToHome:" id="Vha-HM-dvR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="YJp-de-o94">
