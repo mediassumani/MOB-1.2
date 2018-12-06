@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 class ViewController: UIViewController {
 
@@ -28,8 +29,14 @@ class ViewController: UIViewController {
         entries = [goodEntry, badEntry, neutralEntry]
         moondEntriesTableView.reloadData()
         
-        self.moondEntriesTableView.delegate = self as UITableViewDelegate
-        self.moondEntriesTableView.dataSource = self as UITableViewDataSource
+        self.moondEntriesTableView.delegate = self as? UITableViewDelegate
+        self.moondEntriesTableView.dataSource = self as? UITableViewDataSource
+        
+        // Apple watch connectivity
+        if WCSession.isSupported(){
+            WCSession.default.delegate = self as? WCSessionDelegate
+            WCSession.default.activate()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,10 +105,9 @@ class ViewController: UIViewController {
             
             default: break
         }
-      }
         
     }
-    
+  }
     @IBAction func unwindToHome(_ segue: UIStoryboardSegue){
         
         guard let identifier = segue.identifier else {return}
@@ -129,42 +135,83 @@ class ViewController: UIViewController {
             break
         }
     }
-}
-
-extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
-        return entries.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "mood entry cell", for: indexPath) as! MoodEntryTableViewCell
-        let entry = entries[indexPath.row]
-        cell.configure(entry.mood)
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedEntry = entries[indexPath.row]
-        let destinationVC = MoodDetailedViewController()
-        destinationVC.mood = selectedEntry.mood
-        destinationVC.date = selectedEntry.date
-        
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        switch editingStyle{
-        case .delete:
-            deleteEntry(at: indexPath.row)
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        DispatchQueue.main.async {
+            print("This is the user info \(userInfo)")
             
-        default:
-            break
+            guard let mood = userInfo["mood"] as? String, let date =  userInfo["date"] as? Date else{ return}
+            let newEntry : MoodEntry!
+            
+            switch mood {
+            case "Amazing":
+                newEntry = MoodEntry(mood: .amazing, date: date)
+            case "Good":
+                newEntry = MoodEntry(mood: .good, date: date)
+            case "Bad":
+                newEntry = MoodEntry(mood: .bad, date: date)
+            case "Terrible":
+                newEntry = MoodEntry(mood: .terrible, date: date)
+            case "Neutral":
+                newEntry = MoodEntry(mood: .neutral, date: date)
+            default:
+                return
+            }
+            
+            self.entries.append(newEntry)
+            self.moondEntriesTableView.reloadData()
+        }
+        
+    }
+        
+    
+    // WatchConnectiviry delegate function
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if error != nil {
+            print("Error: \(error)")
+        }else{
+            print("Ready to communicate with apple watch.")
         }
     }
 }
+        
+        
+extension ViewController: UITableViewDataSource, UITableViewDelegate{
+        
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            
+            return entries.count
+        }
+        
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "mood entry cell", for: indexPath) as! MoodEntryTableViewCell
+            let entry = entries[indexPath.row]
+            cell.configure(entry.mood)
+            
+            return cell
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let selectedEntry = entries[indexPath.row]
+            let destinationVC = MoodDetailedViewController()
+            destinationVC.mood = selectedEntry.mood
+            destinationVC.date = selectedEntry.date
+            
+        }
+        
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            
+            switch editingStyle{
+            case .delete:
+                deleteEntry(at: indexPath.row)
+                
+            default:
+                break
+            }
+        }
+
+}
+    
 
