@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Create an instance of the main view controller
         let navigationController = UINavigationController()
-        let mainController = MainViewController.instantiate()
+        let mainController = HabitsTableViewController.instantiate()
         
         navigationController.setViewControllers([mainController], animated: false)
         

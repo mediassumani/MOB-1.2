@@ -10,8 +10,8 @@
 		B8AFA8DC21B7185900FC6BFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AFA8DB21B7185900FC6BFD /* AppDelegate.swift */; };
 		B8AFA8E321B7185C00FC6BFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8AFA8E221B7185C00FC6BFD /* Assets.xcassets */; };
 		B8AFA8E621B7185C00FC6BFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AFA8E421B7185C00FC6BFD /* LaunchScreen.storyboard */; };
-		B8AFA8EF21B7218000FC6BFD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AFA8ED21B7218000FC6BFD /* MainViewController.swift */; };
-		B8AFA8F021B7218000FC6BFD /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AFA8EE21B7218000FC6BFD /* MainViewController.xib */; };
+		B8AFA8EF21B7218000FC6BFD /* HabitsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AFA8ED21B7218000FC6BFD /* HabitsTableViewController.swift */; };
+		B8AFA8F021B7218000FC6BFD /* HabitsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AFA8EE21B7218000FC6BFD /* HabitsTableViewController.xib */; };
 		B8AFA8F621B722DD00FC6BFD /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AFA8F521B722DD00FC6BFD /* UIViewControllerExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,8 +21,8 @@
 		B8AFA8E221B7185C00FC6BFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8AFA8E521B7185C00FC6BFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8AFA8E721B7185C00FC6BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8AFA8ED21B7218000FC6BFD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		B8AFA8EE21B7218000FC6BFD /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		B8AFA8ED21B7218000FC6BFD /* HabitsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsTableViewController.swift; sourceTree = "<group>"; };
+		B8AFA8EE21B7218000FC6BFD /* HabitsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitsTableViewController.xib; sourceTree = "<group>"; };
 		B8AFA8F521B722DD00FC6BFD /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,8 +69,8 @@
 		B8AFA8F121B7218400FC6BFD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B8AFA8ED21B7218000FC6BFD /* MainViewController.swift */,
-				B8AFA8EE21B7218000FC6BFD /* MainViewController.xib */,
+				B8AFA8ED21B7218000FC6BFD /* HabitsTableViewController.swift */,
+				B8AFA8EE21B7218000FC6BFD /* HabitsTableViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -142,7 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8AFA8E621B7185C00FC6BFD /* LaunchScreen.storyboard in Resources */,
-				B8AFA8F021B7218000FC6BFD /* MainViewController.xib in Resources */,
+				B8AFA8F021B7218000FC6BFD /* HabitsTableViewController.xib in Resources */,
 				B8AFA8E321B7185C00FC6BFD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,7 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8AFA8EF21B7218000FC6BFD /* MainViewController.swift in Sources */,
+				B8AFA8EF21B7218000FC6BFD /* HabitsTableViewController.swift in Sources */,
 				B8AFA8F621B722DD00FC6BFD /* UIViewControllerExtensions.swift in Sources */,
 				B8AFA8DC21B7185900FC6BFD /* AppDelegate.swift in Sources */,
 			);
