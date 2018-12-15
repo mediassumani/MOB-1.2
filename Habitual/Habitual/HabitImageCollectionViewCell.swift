@@ -10,9 +10,20 @@ import UIKit
 
 class HabitImageCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var itemImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    static let identifier = "habit image cell"
+    
+    static var nib: UINib {
+        return UINib(nibName: String(describing: self), bundle: nil)
+    }
+    
+    func setImage(image: UIImage){
+        self.itemImageView.image = image
     }
 
 }

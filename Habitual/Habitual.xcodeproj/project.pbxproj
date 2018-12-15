@@ -21,6 +21,7 @@
 		B8C4066821C5A237006DF50B /* AddHabitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C4066621C5A237006DF50B /* AddHabitViewController.xib */; };
 		B8C4066B21C5A468006DF50B /* HabitImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4066921C5A468006DF50B /* HabitImageCollectionViewCell.swift */; };
 		B8C4066C21C5A468006DF50B /* HabitImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C4066A21C5A468006DF50B /* HabitImageCollectionViewCell.xib */; };
+		B8C4066E21C5A7A8006DF50B /* AddHabitViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4066D21C5A7A8006DF50B /* AddHabitViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		B8C4066621C5A237006DF50B /* AddHabitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddHabitViewController.xib; sourceTree = "<group>"; };
 		B8C4066921C5A468006DF50B /* HabitImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8C4066A21C5A468006DF50B /* HabitImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		B8C4066D21C5A7A8006DF50B /* AddHabitViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddHabitViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				B8C4066621C5A237006DF50B /* AddHabitViewController.xib */,
 				B8C4066921C5A468006DF50B /* HabitImageCollectionViewCell.swift */,
 				B8C4066A21C5A468006DF50B /* HabitImageCollectionViewCell.xib */,
+				B8C4066D21C5A7A8006DF50B /* AddHabitViewController+Extension.swift */,
 			);
 			path = Habitual;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				B8AFA8DC21B7185900FC6BFD /* AppDelegate.swift in Sources */,
 				B8C4066221C4A037006DF50B /* PersistenceLayer.swift in Sources */,
 				B8C4066721C5A237006DF50B /* AddHabitViewController.swift in Sources */,
+				B8C4066E21C5A7A8006DF50B /* AddHabitViewController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,21 +10,36 @@ import UIKit
 
 class AddHabitViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    let habitImages = Habit.Images.allCases
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupNavBar()
+        collectionView.allowsMultipleSelection = false
+        
+        collectionView.register(HabitImageCollectionViewCell.nib, forCellWithReuseIdentifier: HabitImageCollectionViewCell.identifier)
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func pickPhotoButtonPressed(_ sender: Any) {
+        
+        
     }
-    */
-
+    
+    @objc func cancelAddHabit(_ sender: UIBarButtonItem) {
+        
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func setupNavBar() {
+        title = "Select Image"
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddHabit(_:)))
+        navigationItem.leftBarButtonItem = cancelButton
+        
+    }
+    
 }
