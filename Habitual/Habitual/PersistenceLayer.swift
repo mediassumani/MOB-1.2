@@ -111,4 +111,5 @@ struct PersistenceLayer {
     mutating func setNeedsToReloadHabits() {
         self.loadHabits()
     }
+    
 }
