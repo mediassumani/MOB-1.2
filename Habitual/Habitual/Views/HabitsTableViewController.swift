@@ -10,7 +10,7 @@ import UIKit
 
 class HabitsTableViewController: UITableViewController {
 
-    
+    private var persistance = PersistenceLayer()
     var habits: [Habit] = [
         Habit(title: "Go to bed before 10p", image: Habit.Images.book),
         Habit(title: "Drink 8 Glasses of Water", image: Habit.Images.book),
@@ -23,7 +23,14 @@ class HabitsTableViewController: UITableViewController {
         
         //tableView.reloadData()
         setupNavBar()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(HabitTableViewCell.nib, forCellReuseIdentifier: HabitTableViewCell.identifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        persistance.setNeedsToReloadHabits()
+        tableView.reloadData()
     }
     
     
@@ -33,24 +40,27 @@ class HabitsTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = addButton
     }
     
+
     @objc func pressAddHabit(_ sender: UIBarButtonItem) {
-//        habits.insert("Hello, World!", at: 0)
-//        let topIndexPath = IndexPath(row: 0, section: 0)
-//        tableView.insertRows(at: [topIndexPath], with: .automatic)
+        let addHabitVc = AddHabitViewController.instantiate()
+        let navigationController = UINavigationController(rootViewController: addHabitVc)
+        present(navigationController, animated: true, completion: nil)
+        
     }
+
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return habits.count
+        return persistance.habits.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
-        var currentHabit = habits[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: HabitTableViewCell.identifier, for: indexPath) as! HabitTableViewCell
+        let habit = persistance.habits[indexPath.row]
         
-        cell.textLabel?.text = currentHabit.title
+        cell.configure(Habit)
         
         return cell
     }
