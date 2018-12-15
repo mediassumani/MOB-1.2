@@ -60,9 +60,18 @@ class HabitsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: HabitTableViewCell.identifier, for: indexPath) as! HabitTableViewCell
         let habit = persistance.habits[indexPath.row]
         
-        cell.configure(Habit)
+        cell.configure(habit)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedHabit = persistance.habits[indexPath.row]
+        let habitDetailedVc = HabitDetailedViewController.instantiate()
+        habitDetailedVc.habit = selectedHabit
+        habitDetailedVc.habitIndex = indexPath.row
+        navigationController?.pushViewController(habitDetailedVc, animated: true)
     }
 
 }
