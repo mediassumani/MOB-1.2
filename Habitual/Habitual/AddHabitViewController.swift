@@ -25,7 +25,10 @@ class AddHabitViewController: UIViewController {
 
     @IBAction func pickPhotoButtonPressed(_ sender: Any) {
         
-        
+        guard let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first else {return}
+        let confirmHabitVC = ConfirmHabitViewController.instantiate()
+        confirmHabitVC.habitImage = habitImages[selectedIndexPath.row]
+        navigationController?.pushViewController(confirmHabitVC, animated: true)
     }
     
     @objc func cancelAddHabit(_ sender: UIBarButtonItem) {
