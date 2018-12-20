@@ -18,6 +18,23 @@ class PageCell: UICollectionViewCell{
         return imageView
     }()
     
+    let schoolDescriptionTextView: UITextView = {
+        let textView = UITextView()
+        let attributedText = NSMutableAttributedString(string: "College designed for the 21st Century",
+                                                       attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
+        
+        attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science in a community of makers empowered to shape the world.", attributes:
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
+             NSAttributedString.Key.foregroundColor: UIColor.gray]))
+        
+        textView.attributedText = attributedText
+        textView.textAlignment = .center
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
     
     
     override init(frame: CGRect){
@@ -36,6 +53,8 @@ class PageCell: UICollectionViewCell{
         
         addSubview(makeSchoolImageView)
         addSubview(topImageContainerView)
+        addSubview(schoolDescriptionTextView)
+        
         topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
         
         topImageContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -49,10 +68,10 @@ class PageCell: UICollectionViewCell{
         makeSchoolImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.5).isActive = true
         makeSchoolImageView.widthAnchor.constraint(equalTo: topImageContainerView.widthAnchor, multiplier: 0.5).isActive = true
         
-//        schoolDescriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
-//        schoolDescriptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-//        schoolDescriptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-//        schoolDescriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        schoolDescriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
+        schoolDescriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        schoolDescriptionTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        schoolDescriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
         
     }
 }

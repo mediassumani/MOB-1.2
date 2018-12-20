@@ -35,22 +35,22 @@ class ViewController: UIViewController {
     
     
     // creates a text view that contains the a short description
-    let schoolDescriptionTextView: UITextView = {
-        let textView = UITextView()
-        let attributedText = NSMutableAttributedString(string: "College designed for the 21st Century",
-                                                       attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
-        
-        attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science in a community of makers empowered to shape the world.", attributes:
-            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
-             NSAttributedString.Key.foregroundColor: UIColor.gray]))
-        
-        textView.attributedText = attributedText
-        textView.textAlignment = .center
-        textView.isEditable = false
-        textView.isScrollEnabled = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
+//    let schoolDescriptionTextView: UITextView = {
+//        let textView = UITextView()
+//        let attributedText = NSMutableAttributedString(string: "College designed for the 21st Century",
+//                                                       attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
+//
+//        attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science in a community of makers empowered to shape the world.", attributes:
+//            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
+//             NSAttributedString.Key.foregroundColor: UIColor.gray]))
+//
+//        textView.attributedText = attributedText
+//        textView.textAlignment = .center
+//        textView.isEditable = false
+//        textView.isScrollEnabled = false
+//        textView.translatesAutoresizingMaskIntoConstraints = false
+//        return textView
+//    }()
     
     // creates and styles the button to go backward
     let previousButton: UIButton = {
@@ -83,8 +83,5 @@ class ViewController: UIViewController {
         pageController.pageIndicatorTintColor = .gray
         return pageController
     }()
-    
-
-    
 }
 
