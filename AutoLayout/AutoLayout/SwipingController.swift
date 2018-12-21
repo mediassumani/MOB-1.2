@@ -23,8 +23,16 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         
         collectionView.backgroundColor = .white
         collectionView.isPagingEnabled = true
+        setUpButtonControls()
         
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: "cell")
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        
+        let x = targetContentOffset.pointee.x
+        pageControll.currentPage = Int(x / view.frame.width)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,6 +49,75 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         return cell
     }
     
+    // creates and styles the button to go backward
+    let previousButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("PREV", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.gray, for: .normal)
+        button.addTarget(self, action: #selector(handlePrevSwipe), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
+    // creates and styles the button to go foward
+    let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("NEXT", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.gloomyBlue, for: .normal)
+        button.addTarget(self, action: #selector(handleNextSwipe), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
+    // creates and lays out the page controller
+    lazy var pageControll: UIPageControl = {
+        let pageController = UIPageControl()
+        pageController.currentPage = 0
+        pageController.numberOfPages = pages.count
+        pageController.currentPageIndicatorTintColor = .gloomyBlue
+        pageController.pageIndicatorTintColor = .gray
+        return pageController
+    }()
+    
+    
+    @objc private func handleNextSwipe(){
+        
+        let nextIndex = min(pageControll.currentPage + 1, pages.count - 1)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControll.currentPage = nextIndex
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    
+    @objc private func handlePrevSwipe(){
+        
+        let nextIndex = min(pageControll.currentPage - 1, pages.count + 1)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControll.currentPage = nextIndex
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+    }
+    /// Function to layout up the next and previous button
+    private func setUpButtonControls(){
+        
+        
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControll, nextButton])
+        bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
+        bottomControlsStackView.axis = .horizontal
+        bottomControlsStackView.distribution = .fillEqually
+        view.addSubview(bottomControlsStackView)
+        
+        NSLayoutConstraint.activate([
+            bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
+            ])
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -51,6 +128,5 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         
         return  0
     }
-
 }
 
