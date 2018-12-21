@@ -14,12 +14,15 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="MainMenuViewController" customModule="WatchMoodTracker_Extension">
                     <items>
-                        <label width="1" height="1" alignment="left" text="How are you feeling today?" id="Yga-aY-Q9c">
-                            <fontDescription key="font" type="system" weight="ultraLight" pointSize="10"/>
-                        </label>
+                        <button width="1" alignment="left" title="How are you feeling today?" id="MfU-CU-gxv">
+                            <connections>
+                                <segue destination="bLW-qT-XWF" kind="push" id="5NM-I6-jIH"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
+            <point key="canvasLocation" x="135" y="100"/>
         </scene>
         <!--Mood Table View Controller-->
         <scene sceneID="Ahz-WF-7cf">

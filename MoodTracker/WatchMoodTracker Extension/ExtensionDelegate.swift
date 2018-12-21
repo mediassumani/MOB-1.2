@@ -17,7 +17,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidBecomeActive() {
         if WCSession.isSupported(){
-            WCSession.default.delegate = self as! WCSessionDelegate
+            WCSession.default.delegate = self as? WCSessionDelegate
             WCSession.default.activate()
         }
     }

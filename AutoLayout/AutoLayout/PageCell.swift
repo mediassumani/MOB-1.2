@@ -10,11 +10,34 @@ import UIKit
 
 class PageCell: UICollectionViewCell{
     
+    var page: Page? {
+        didSet{
+            
+            guard let unwrappedPage = page else {return}
+            makeSchoolImageView.image = UIImage(named: unwrappedPage.imageName)
+            
+            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText,
+                                                           attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
+            
+            attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.description)", attributes:
+                [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
+                 NSAttributedString.Key.foregroundColor: UIColor.gray]))
+            
+            schoolDescriptionTextView.attributedText = attributedText
+            schoolDescriptionTextView.textAlignment = .center
+            
+        }
+    }
+    
     // creates an image view that holds the school logo
     let makeSchoolImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "new_logo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        imageView.layer.shadowRadius = 1
+        imageView.layer.cornerRadius = 30
         return imageView
     }()
     
@@ -23,7 +46,7 @@ class PageCell: UICollectionViewCell{
         let attributedText = NSMutableAttributedString(string: "College designed for the 21st Century",
                                                        attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 18)])
         
-        attributedText.append(NSAttributedString(string: "\n\n\nEarn your Bachelor's in Applied Computer Science in a community of makers empowered to shape the world.", attributes:
+        attributedText.append(NSAttributedString(string: "Earn your Bachelor's in Applied Computer Science in a community of makers empowered to shape the world.", attributes:
             [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
              NSAttributedString.Key.foregroundColor: UIColor.gray]))
         
